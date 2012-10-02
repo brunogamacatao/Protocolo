@@ -103,3 +103,27 @@ grails {
               "mail.smtp.socketFactory.fallback":"false"]
    }
 }
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'protocolo.Usuario'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'protocolo.UsuarioGrupo'
+grails.plugins.springsecurity.authority.className = 'protocolo.Grupo'
+
+
+import grails.plugins.springsecurity.SecurityConfigType
+grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+grails.plugins.springsecurity.interceptUrlMap = [
+  '/usuario/*':         ['ROLE_ADMIN'],
+  '/grupo/*':           ['ROLE_ADMIN'],
+  '/usuarioGrupo/*':    ['ROLE_ADMIN'],
+  '/pessoa/*':          ['IS_AUTHENTICATED_REMEMBERED'],
+  '/setor/*':           ['IS_AUTHENTICATED_REMEMBERED'],
+  '/solicitante/*':     ['ROLE_ALUNO'],
+  '/**':                ['IS_AUTHENTICATED_ANONYMOUSLY']
+]
+
+
+
+
+
+
+
