@@ -10,9 +10,9 @@ import grails.test.mixin.*
 class PessoaControllerTests {
 
     def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        assert params  != null
+        params["nome"]  = "Fulano de Tal"
+        params["email"] = "fulano@email.com"
     }
 
     void testIndex() {
@@ -101,7 +101,7 @@ class PessoaControllerTests {
 
         // test invalid parameters in update
         params.id = pessoa.id
-        //TODO: add invalid values to params object
+        params.email = 'fulano' // email invalido
 
         controller.update()
 
